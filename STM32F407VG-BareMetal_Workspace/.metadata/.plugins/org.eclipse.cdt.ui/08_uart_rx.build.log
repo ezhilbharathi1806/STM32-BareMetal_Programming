@@ -1,0 +1,21 @@
+21:43:55 **** Build of configuration Debug for project 08_uart_rx ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f407vgtx.d" -MT"Startup/startup_stm32f407vgtx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f407vgtx.o" "../Startup/startup_stm32f407vgtx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F405xx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F405xx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F405xx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F405xx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc -o "08_uart_rx.elf" @"objects.list"   -mcpu=cortex-m4 -T"G:\Embedded\STM32-BareMetal_Programming\STM32F407VG-BareMetal_Workspace\08_uart_rx\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="08_uart_rx.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 08_uart_rx.elf
+ 
+arm-none-eabi-size  08_uart_rx.elf 
+arm-none-eabi-objdump -h -S 08_uart_rx.elf  > "08_uart_rx.list"
+   text	   data	    bss	    dec	    hex	filename
+   5396	     92	   1908	   7396	   1ce4	08_uart_rx.elf
+Finished building: default.size.stdout
+ 
+Finished building: 08_uart_rx.list
+ 
+
+21:44:06 Build Finished. 0 errors, 0 warnings. (took 11s.90ms)
+

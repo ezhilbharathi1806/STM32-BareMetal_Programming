@@ -1,0 +1,44 @@
+#include <stm32f407xx.h>
+
+#define SYSTICK_LOAD_VAL			16000        //delay = N/systemClock  //where N = no of cycles required to generate 1ms delay
+#define	CTRL_ENABLE					(1U<<0)
+#define CTRL_CLKSRC					(1U<<2)
+#define CTRL_COUNTFLAG				(1U<<16)
+
+#define CTRL_TICKINT				(1U<<1)
+
+
+void SystickDelayMs(uint32_t delay){
+	/*Reload with number of clocks per millisecond*/
+	SysTick->LOAD	= SYSTICK_LOAD_VAL;
+
+	/*Clear systick current value register */
+	SysTick->VAL = 0;
+
+	/*Enable systick and select internal clk src*/
+	SysTick->CTRL = CTRL_ENABLE | CTRL_CLKSRC;
+
+	for(uint32_t i=0; i<delay ; i++){
+
+		/*Wait until the COUNTFLAG is set*/
+
+		while((SysTick->CTRL &  CTRL_COUNTFLAG) == 0){}
+
+	}
+
+	SysTick->CTRL = 0;
+}
+
+void systick_1hz_interrupt(){
+	/*Reload with number of clocks persecond*/
+	SysTick->LOAD	= 16000000 - 1;
+
+	/*Clear systick current value register */
+	SysTick->VAL = 0;
+
+	/*Enable systick and select internal clk src*/
+	SysTick->CTRL = CTRL_ENABLE | CTRL_CLKSRC;
+
+	/*Enable systick interrupt*/
+	SysTick->CTRL |= CTRL_TICKINT;
+}

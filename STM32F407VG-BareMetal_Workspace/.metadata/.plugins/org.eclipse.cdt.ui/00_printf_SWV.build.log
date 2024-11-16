@@ -1,0 +1,10 @@
+20:46:38 **** Incremental Build of configuration Debug for project 00_printf_SWV ****
+make -j4 all 
+arm-none-eabi-size  00_printf_SWV.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3404	     92	   1900	   5396	   1514	00_printf_SWV.elf
+Finished building: default.size.stdout
+ 
+
+20:46:39 Build Finished. 0 errors, 0 warnings. (took 801ms)
+

@@ -1,0 +1,6 @@
+../Src/lcd.c:14:6:GPIO_Init	1
+../Src/lcd.c:54:6:LCD_command	1
+../Src/lcd.c:72:6:LCD_data	1
+../Src/lcd.c:90:6:LCD_Init	1
+../Src/lcd.c:106:6:LCD_string	2
+../Src/lcd.c:112:6:delayMs	3

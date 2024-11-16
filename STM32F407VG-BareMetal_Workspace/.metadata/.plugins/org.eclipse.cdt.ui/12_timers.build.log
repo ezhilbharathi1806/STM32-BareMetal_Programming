@@ -1,0 +1,18 @@
+20:54:36 **** Incremental Build of configuration Debug for project 12_timers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F405xx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F405xx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/tim.d" -MT"Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/tim.o"
+arm-none-eabi-gcc -o "12_timers.elf" @"objects.list"   -mcpu=cortex-m4 -T"G:\Embedded\STM32-BareMetal_Programming\STM32F407VG-BareMetal_Workspace\12_timers\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="12_timers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 12_timers.elf
+ 
+arm-none-eabi-size  12_timers.elf 
+arm-none-eabi-objdump -h -S 12_timers.elf  > "12_timers.list"
+   text	   data	    bss	    dec	    hex	filename
+    652	      0	   1568	   2220	    8ac	12_timers.elf
+Finished building: default.size.stdout
+ 
+Finished building: 12_timers.list
+ 
+
+20:54:44 Build Finished. 0 errors, 0 warnings. (took 7s.607ms)
+

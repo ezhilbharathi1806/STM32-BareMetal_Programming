@@ -1,0 +1,14 @@
+#include "lcd.h"
+
+int main(void){
+	LCD_Init();
+
+	LCD_data('H');
+
+	while(1){
+
+		LCD_string("Hello from STM32F407VG \r\n");
+
+		delayMs(1000);
+	}
+}

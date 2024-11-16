@@ -1,0 +1,7 @@
+../Src/uart.c:20:6:UART2_tx_init	1
+../Src/uart.c:50:6:UART2_txrx_init	1
+../Src/uart.c:90:9:uart2_read	2
+../Src/uart.c:99:6:uart2_write	2
+../Src/uart.c:108:5:__io_putchar	1
+../Src/uart.c:114:6:USART2_SendString	2
+../Src/uart.c:121:13:uart_set_baudrate	1

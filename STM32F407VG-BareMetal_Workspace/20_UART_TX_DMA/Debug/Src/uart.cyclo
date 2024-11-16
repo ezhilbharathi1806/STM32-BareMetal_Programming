@@ -1,0 +1,7 @@
+G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Src/uart.c:27:6:dma1_stream6_init	2
+../Src/uart.c:83:6:UART2_tx_init	1
+../Src/uart.c:113:6:uart2_write	2
+../Src/uart.c:122:5:__io_putchar	1
+../Src/uart.c:128:6:USART2_SendString	2
+../Src/uart.c:135:13:uart_set_baudrate	1

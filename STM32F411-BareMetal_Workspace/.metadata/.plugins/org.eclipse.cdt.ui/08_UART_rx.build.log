@@ -1,0 +1,17 @@
+23:36:41 **** Incremental Build of configuration Debug for project 08_UART_rx ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"G:/Embedded/STM32-BareMetal_Programming/Chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "08_UART_rx.elf" @"objects.list"   -mcpu=cortex-m4 -T"G:\Embedded\STM32-BareMetal_Programming\STM32F411-BareMetal_Workspace\08_UART_rx\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="08_UART_rx.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 08_UART_rx.elf
+ 
+arm-none-eabi-size  08_UART_rx.elf 
+arm-none-eabi-objdump -h -S 08_UART_rx.elf  > "08_UART_rx.list"
+   text	   data	    bss	    dec	    hex	filename
+   1068	      0	   1568	   2636	    a4c	08_UART_rx.elf
+Finished building: default.size.stdout
+ 
+Finished building: 08_UART_rx.list
+ 
+
+23:36:44 Build Finished. 0 errors, 0 warnings. (took 2s.850ms)
+
