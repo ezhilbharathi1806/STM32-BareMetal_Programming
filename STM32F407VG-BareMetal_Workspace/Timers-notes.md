@@ -51,9 +51,7 @@ In STM32F407, timers work by counting clock cycles from a specified clock source
 
 The timer’s frequency can be calculated using the following formula:
 
-\[
-f_{timer} = \frac{f_{clk}}{(prescaler + 1) \times (auto-reload + 1)}
-\]
+![image](https://github.com/user-attachments/assets/9edb74dc-f828-4193-84af-0d23f7a734a6)
 
 Where:
 - **f_clk** is the clock frequency provided to the timer (typically the system clock or a separate timer clock).
@@ -69,9 +67,8 @@ Suppose you want to generate a PWM signal with a frequency of 1 kHz and a 50% du
 
 Using the formula for the timer frequency:
 
-\[
-f_{timer} = \frac{f_{clk}}{(prescaler + 1) \times (auto-reload + 1)}
-\]
+![image](https://github.com/user-attachments/assets/c26384d0-c7f6-40f3-a008-a2a9b435657d)
+
 
 To achieve a 1 kHz PWM signal, we first calculate the timer’s prescaler and auto-reload values.
 
@@ -79,17 +76,15 @@ To achieve a 1 kHz PWM signal, we first calculate the timer’s prescaler and au
 
 We can choose a prescaler value of 71 to reduce the frequency from 72 MHz to 1 MHz (72 MHz ÷ 72 = 1 MHz). This means the timer will count up to 1 million per second.
 
-\[
-f_{timer} = \frac{72 \text{ MHz}}{71 + 1} = 1 \text{ MHz}
-\]
+![image](https://github.com/user-attachments/assets/ad076ac4-07c3-4254-8821-dec67782de9a)
+
 
 **Step 2: Calculating Auto-reload Value**
 
 Now, to get a PWM frequency of 1 kHz, the timer needs to overflow every 1000 ticks (1 ms). Therefore, the auto-reload value should be:
 
-\[
-auto-reload = \frac{1,000,000}{1,000} - 1 = 999
-\]
+![image](https://github.com/user-attachments/assets/8cbf54f1-8724-4e13-9338-e0992c66b883)
+
 
 So, the timer will overflow every 1000 timer ticks, resulting in a 1 kHz PWM signal.
 
@@ -97,9 +92,8 @@ So, the timer will overflow every 1000 timer ticks, resulting in a 1 kHz PWM sig
 
 For a 50% duty cycle, the compare value will be half of the auto-reload value:
 
-\[
-compare\_value = \frac{999}{2} = 499
-\]
+![image](https://github.com/user-attachments/assets/39276265-e8c6-4fe6-b470-fa7c048a3bc0)
+
 
 This means the PWM will be high for 499 timer ticks and low for the remaining 500 ticks.
 
@@ -112,15 +106,12 @@ Now, let’s configure a timer to create a delay of 100 ms, assuming the system 
 
 First, calculate the number of timer ticks needed for a 100 ms delay:
 
-\[
-timer\_ticks = 100 \, ms \times 72 \, MHz = 100 \times 10^{-3} \times 72 \times 10^6 = 7,200,000
-\]
+![image](https://github.com/user-attachments/assets/0ae66d8e-bb48-448c-9903-3a58636083ea)
+
 
 Next, choose a prescaler to slow down the clock. If we choose a prescaler of 71 (which divides the system clock by 72), we can calculate the auto-reload value.
 
-\[
-auto-reload = \frac{7,200,000}{72} = 100,000
-\]
+![image](https://github.com/user-attachments/assets/8c7d463e-abe9-4f0e-a349-b07e16c9c776)
 
 So, with a prescaler of 71 and an auto-reload value of 100,000, the timer will overflow after 100 ms, generating a delay.
 
@@ -128,8 +119,7 @@ So, with a prescaler of 71 and an auto-reload value of 100,000, the timer will o
 
 Timers in the STM32F407 microcontroller are versatile and can be used for various tasks like time base generation, PWM generation, input capture, output compare, and event handling. To perform calculations related to timers, you typically use the timer frequency formula:
 
-\[
-f_{timer} = \frac{f_{clk}}{(prescaler + 1) \times (auto-reload + 1)}
-\]
+![image](https://github.com/user-attachments/assets/49b0b92f-7771-403a-aaab-d185e66d9fb6)
+
 
 This allows you to set the prescaler and auto-reload values to achieve the desired timer frequency or time delay. You can use these capabilities to implement time-critical functions like PWM generation, motor control, signal measurement, and event generation in embedded systems.
