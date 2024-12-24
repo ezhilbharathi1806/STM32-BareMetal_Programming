@@ -9,10 +9,10 @@ void tim2_1hz_init(){
 	RCC->APB1ENR |= TIM2EN;
 
 	//Set prescalar
-	TIM2->PSC = 1600-2;  //16 000 000 / 1 600 = 10 000
+	TIM2->PSC = 16000-1;  //16 000 000 / 1 6000 = 1 000 =1Khz ( 1ms tick)
 
 	//set suto reload value
-	TIM2->ARR =10000-1;   // 10 000 / 10 000 = 1
+	TIM2->ARR =1000-1;   // 1000 ticks to generate 1 second delay
 
 	//clear counter
 	TIM2->CNT = 0;
