@@ -1,0 +1,141 @@
+#include "stm32f103x6.h"
+
+
+void GPIO_Init(void);
+void LCD_command(unsigned char command);
+void LCD_data(char data);
+void LCD_Init(void);
+void LCD_string(unsigned char *s);
+
+void delayMs(int delay);
+
+//D4-D7 -> PA0-PA3
+//RS -> PA4
+//RW -> PA5
+//E -> PA6
+
+#define GPIOAEN	(1U<<0)
+
+#define  RS		(1U<<4)
+#define RW		(1U<<5)
+#define E		(1U<<6)
+
+int main(void){
+
+	//GPIO_Init();
+	LCD_Init();
+	Serial.begin(9600);
+
+	unsigned char buffer[8] = "Hello";
+	while(1){
+		LCD_command(0x80);
+		LCD_data('H');
+		Serial.println("h\t");
+
+		LCD_command(0xC0);
+		LCD_string(buffer);
+
+		delayMs(1000);
+		LCD_command(0x01);
+
+		delayMs(500);
+
+	}
+}
+
+
+
+
+void GPIO_Init(void){
+	//enable clock access to PortA
+	RCC->IOPENR |= GPIOAEN;
+
+	//set output mode to PA0 to PA10 pins
+	//PA0
+	GPIOA->CRL |= (1U<<0);
+	GPIOA->CRL &= (1U<<1);
+	//PA1
+	GPIOA->CRL |= (1U<<4);
+	GPIOA->CRL &= (1U<<5);
+	//PA2
+	GPIOA->CRL |= (1U<<8);
+	GPIOA->CRL &= (1U<<9);
+	//PA3
+	GPIOA->CRL |= (1U<<12);
+	GPIOA->CRL &= (1U<<13);
+	//PA4
+	GPIOA->CRL |= (1U<<16);
+	GPIOA->CRL &= (1U<<17);
+	//PA5
+	GPIOA->CRL |= (1U<<20);
+	GPIOA->CRL &= (1U<<21);
+	//PA6
+	GPIOA->CRL |= (1U<<24);
+	GPIOA->CRL &= (1U<<25);
+
+}
+void LCD_command(unsigned char command){
+	//upper nibble
+	GPIOA->ODR = (command>>4) & 0x0F;
+	GPIOA->ODR &= ~RS;	//RS =0
+	GPIOA->ODR &= ~RW;	//RW =0
+	GPIOA->ODR |= E;	//E = 1
+	delayMs(1);
+	GPIOA->ODR &= ~E;	//E = 0
+
+	//lower nibble
+	GPIOA->ODR = (command & 0x0F);
+	GPIOA->ODR &= ~RS;	//RS =0
+	GPIOA->ODR &= ~RW;	//RW =0
+	GPIOA->ODR |= E;	//E = 1
+	delayMs(1);
+	GPIOA->ODR &= ~E;	//E = 0
+
+}
+void LCD_data(char data){
+	//upper nibble
+	GPIOA->ODR = (data>>4) & 0x0F;
+	GPIOA->ODR |= RS;	//RS =1
+	GPIOA->ODR &= ~RW;	//RW =0
+	GPIOA->ODR |= E;	//E = 1
+	delayMs(1);
+	GPIOA->ODR &= ~E;	//E = 0
+
+	//lower nibble
+	GPIOA->ODR = (data & 0x0F);
+	GPIOA->ODR |= RS;	//RS =1
+	GPIOA->ODR &= ~RW;	//RW =0
+	GPIOA->ODR |= E;	//E = 1
+	delayMs(1);
+	GPIOA->ODR &= ~E;	//E = 0
+}
+
+void LCD_Init(void) {
+    GPIO_Init();
+
+    delayMs(30);
+    LCD_command(0x30);
+    delayMs(10);
+    LCD_command(0x30);
+    delayMs(1);
+    LCD_command(0x30);
+
+    LCD_command(0x28);      //set 4-bit data, 2-line, 5x7 font
+    LCD_command(0x06);      //move cursor right after each char
+    LCD_command(0x01);      //clear screen, move cursor to home
+    LCD_command(0x0F);      //turn on display, cursor blinking
+}
+
+void LCD_string(unsigned char *s){
+	while(*s!=0){
+		LCD_data(*s++);
+	}
+}
+/* delay n milliseconds (16 MHz CPU clock) */
+void delayMs(int delay) {
+    int i;
+    for (; delay > 0; delay--){
+        for (i = 0; i < 319500; i++)
+				{}
+			}
+}

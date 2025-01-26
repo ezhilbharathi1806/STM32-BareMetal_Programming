@@ -1,0 +1,17 @@
+#include "stm32f103x6.h"
+
+#define LED_PIN 0  // LED connected to PA0
+
+void delay(volatile uint32_t count) {
+    while (count--) {
+        // Simple delay loop
+    }
+}
+
+int main(){
+	//enable clock access to GPIOA
+	RCC->APB2ENR |= (1U<<2);  //IOPAEN
+
+	//set pa0 pin as output pin
+	GPIOA->
+}

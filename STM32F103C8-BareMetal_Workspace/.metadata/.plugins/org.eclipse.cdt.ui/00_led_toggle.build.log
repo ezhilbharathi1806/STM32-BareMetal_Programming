@@ -1,0 +1,19 @@
+21:32:02 **** Incremental Build of configuration Debug for project 00_led_toggle ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"G:/Embedded/STM32-BareMetal_Programming/STM32F103C8-BareMetal_Workspace/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"G:/Embedded/STM32-BareMetal_Programming/STM32F103C8-BareMetal_Workspace/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "00_led_toggle.elf" @"objects.list"   -mcpu=cortex-m3 -T"G:\Embedded\STM32-BareMetal_Programming\STM32F103C8-BareMetal_Workspace\00_led_toggle\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="00_led_toggle.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 00_led_toggle.elf
+ 
+arm-none-eabi-size  00_led_toggle.elf 
+arm-none-eabi-objdump -h -S 00_led_toggle.elf  > "00_led_toggle.list"
+   text	   data	    bss	    dec	    hex	filename
+    664	      0	   1568	   2232	    8b8	00_led_toggle.elf
+Finished building: default.size.stdout
+ 
+Finished building: 00_led_toggle.list
+ 
+arm-none-eabi-objcopy -O ihex 00_led_toggle.elf 00_led_toggle.hex
+ 
+
+21:32:06 Build Finished. 0 errors, 0 warnings. (took 4s.181ms)
+
